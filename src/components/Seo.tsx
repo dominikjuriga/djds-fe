@@ -5,7 +5,8 @@ import { getStrapiMedia } from "../lib/media";
 
 interface ISeo {
   seo: {
-    siteName: string
+    siteName: string,
+    article?: boolean
   }
 }
 
