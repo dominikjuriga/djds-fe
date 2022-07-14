@@ -78,7 +78,7 @@ const Article = ({ article, categories }: Props) => {
       <Seo seo={{ siteName: article.attributes.title }} />
       <section className='container'>
         <Animated>
-          <Image src={imageUrl} height={article.attributes.image.data.attributes.height} width={article.attributes.image.data.attributes.width}></Image>
+          <Image src={imageUrl} alt={article.attributes.image.data.attributes.alternativeText} height={article.attributes.image.data.attributes.height} width={article.attributes.image.data.attributes.width}></Image>
         </Animated>
         <Animated animationDelay={.25}>
           <h1>

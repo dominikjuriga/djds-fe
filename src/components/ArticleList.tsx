@@ -70,7 +70,7 @@ const Articles = ({ articles }: Props) => {
         )}
         {articles.map((article, i: number) => {
           return (
-            <Animated animationDelay={i * .1}>
+            <Animated animationDelay={i * .1} key={article.attributes.slug}>
               <Card
                 article={article}
                 key={`article__${article.attributes.slug}`}
