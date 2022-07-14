@@ -87,24 +87,34 @@ section {
   gap: var(--content-gap);
 }
 
-.onlyBig {
+.onlyBig,
+.onlyXL {
   display: none;
 }
 
 
-@media only screen and (min-width: 768px) {
-  .container {
-    padding: var(--content-padding-lg);
-  }
-}
 
-@media only screen and (min-width: 1096px) {
+@media only screen and (min-width: 768px) {
   .onlyBig {
     display: block;
   }
 
   .onlySmall {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 1096px) {
+  .container {
+    padding: var(--content-padding-lg);
+  }
+
+  .onlyLessXL {
+    display: none;
+  }
+
+  .onlyXL {
+    display: block;
   }
 
 }

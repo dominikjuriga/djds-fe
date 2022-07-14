@@ -3,6 +3,8 @@ import { fetchAPI } from '../lib/api'
 import ArticleList from "../components/ArticleList"
 import { useEffect } from 'react'
 import { toast } from "react-toastify"
+import Seo from '../components/Seo'
+import Animated from "../components/Animated"
 
 interface Props {
   articles: {
@@ -74,8 +76,11 @@ const Blog = ({ articles, loadFailed }: Props) => {
 
   return (
     <>
+      <Seo seo={{ siteName: "Blog" }} />
       <section className='container'>
-        <h2>Blog</h2>
+        <Animated>
+          <h2>Blog</h2>
+        </Animated>
         <ArticleList articles={articles} />
       </section>
     </>

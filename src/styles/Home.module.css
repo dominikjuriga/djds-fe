@@ -70,6 +70,13 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .hero {
+    height: 30em;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--content-gap);
+    justify-content: space-between;
+  }
 
   .services,
   .work_list {
@@ -81,14 +88,8 @@
 
 }
 
-@media only screen and (min-width: 1096px) {
-  .hero {
-    height: 30em;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--content-gap);
-    justify-content: space-between;
-  }
+@media only screen and (min-width: 1496px) {
+
 
   .services,
   .work_list {

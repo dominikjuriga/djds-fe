@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Hamburger from "./Hamburger"
 import { useAppContext } from "../context/AppContext"
+import { motion } from "framer-motion"
 
 const navigation = [
   { name: 'Domov', href: '/' },
@@ -14,6 +15,11 @@ export default function Header() {
   const { navOpen, closeNav } = useAppContext();
   return (
     <>
+      {/* <motion.header
+        // className={s.navbar}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      > */}
       <header className={s.navbar}>
         <div className={s.brand}>
           <Link href="/">
@@ -28,7 +34,7 @@ export default function Header() {
             </a>
           </Link>
         </div>
-        <ul className={` ${s.largeNav} onlyBig`}>
+        <ul className={` ${s.largeNav} onlyXL`}>
           {navigation.map((navItem) => (
             <li key={navItem.href}>
               <Link href={navItem.href}>{navItem.name}</Link>
@@ -37,6 +43,7 @@ export default function Header() {
         </ul>
         <Hamburger />
       </header>
+      {/* </motion.header> */}
       <ul className={`${s.navmenu} ${navOpen ? s.active : ""}`}>
         {navigation.map((navItem) => (
           <li key={navItem.href} onClick={closeNav}>

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import Seo from '../components/Seo'
 import s from "../styles/Home.module.css"
 import { MdOutlineDevicesOther, MdCamera, MdLibraryBooks, MdTipsAndUpdates } from "react-icons/md"
 import { FaLaravel, FaVuejs } from "react-icons/fa"
@@ -8,6 +9,9 @@ import { SiWebrtc, SiMariadb, SiCsharp, SiBlazor } from "react-icons/si"
 import Tooltip from '../components/Tooltip'
 import Carousel from '../components/Carousel'
 import { useRef } from "react"
+import { motion, AnimatePresence } from 'framer-motion'
+import Animated from '../components/Animated'
+import AnimatedInView from "../components/AnimatedInView"
 
 const Home: NextPage = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -18,100 +22,118 @@ const Home: NextPage = () => {
   }
   return (
     <>
+      <Seo seo={{ siteName: "Domov" }} />
       <section className={`container ${s.hero}`}>
         <div>
-          <h1 className='pageTitle'>{t.main_title}</h1>
-          <p>{t.main_subtitle}</p>
-          <button className="cta onlyBig" onClick={executeScroll}>
-            {t.cta_title}
-          </button>
+          <Animated>
+            <h1 className='pageTitle'>{t.main_title}</h1>
+          </Animated>
+          <Animated animationDelay={0.25}>
+            <p>{t.main_subtitle}</p>
+          </Animated>
+          <Animated
+            animationDelay={0.5}
+          >
+            <button className="cta onlyBig" onClick={executeScroll}>
+              {t.cta_title}
+            </button>
+          </Animated>
         </div>
-        <div className="center">
-          <Image alt='Stretnutie troch ľudí pri káve' src="/illustrations/meeting.svg" width="300px" height="300px" />
-        </div>
-        <div className="center onlySmall">
-          <button className="cta " onClick={executeScroll}>
-            {t.cta_title}
-          </button>
-        </div>
+        <Animated
+          animationDelay={0.5}>
+          <div className="center">
+            <Image alt='Stretnutie troch ľudí pri káve' src="/illustrations/meeting.svg" width="300px" height="300px" />
+          </div>
+        </Animated>
+        <Animated animationDelay={0.75}>
+          <div className="center onlySmall">
+            <button className="cta " onClick={executeScroll}>
+              {t.cta_title}
+            </button>
+          </div>
+        </Animated>
       </section>
 
-      <section className={`container ${s.scrollMargin}`} ref={scrollRef}>
-        <h2>{t.services_title}</h2>
-        <p>{t.services_subtitle}</p>
-        <ul className={s.services}>
-          {t.services_list.map((service) => (
-            <li key={service.title}>
-              <div className={s.serviceTitle}>
-                {service.icon}
-                <h3>{service.title}</h3>
+      <Animated animationDelay={.25}>
+        <section className={`container ${s.scrollMargin}`} ref={scrollRef}>
+          <h2>{t.services_title}</h2>
+          <p>{t.services_subtitle}</p>
+          <ul className={s.services}>
+            {t.services_list.map((service) => (
+              <li key={service.title}>
+                <div className={s.serviceTitle}>
+                  {service.icon}
+                  <h3>{service.title}</h3>
+                </div>
+                <p className="justify">{service.subtitle}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Animated>
+      <Animated animationDelay={.5}>
+        <section className="container">
+          <h2>{t.work_title}</h2>
+          <p>{t.work_subtitle}</p>
+          <ul className={s.work_list}>
+            {t.work_list.map((work) => (
+              <li key={work.title}>
+                <div className={s.workItem}>
+                  <h3>{work.title}</h3>
+                  <span>{work.duration}</span>
+                </div>
+                <p className='justify'>{work.description}</p>
+                <ul className={s.technology_list}>
+                  {work.technologies.map((technology) => (
+                    <li key={technology.title} >
+                      <Tooltip title={technology.title}>
+                        {technology.icon}
+                      </Tooltip>
+                    </li>
+                  ))}
+                </ul>
+
+              </li>
+            ))}
+            <li className={s.spanTwo}>
+              <div className="center">
+                <div className={s.workItem}>
+                  <h3>{t.work_you_could_be_here}</h3>
+                  <span></span>
+                </div>
               </div>
-              <p className="justify">{service.subtitle}</p>
+              <div className="center">
+                <Link href="/contact">
+                  <a className="cta">
+                    {t.work_cta}
+                  </a>
+                </Link>
+              </div>
             </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="container">
-        <h2>{t.work_title}</h2>
-        <p>{t.work_subtitle}</p>
-        <ul className={s.work_list}>
-          {t.work_list.map((work) => (
-            <li key={work.title}>
-              <div className={s.workItem}>
-                <h3>{work.title}</h3>
-                <span>{work.duration}</span>
-              </div>
-              <p className='justify'>{work.description}</p>
-              <ul className={s.technology_list}>
-                {work.technologies.map((technology) => (
-                  <li key={technology.title} >
-                    <Tooltip title={technology.title}>
-                      {technology.icon}
-                    </Tooltip>
-                  </li>
-                ))}
-              </ul>
-
-            </li>
-          ))}
-          <li className={s.spanTwo}>
-            <div className="center">
-              <div className={s.workItem}>
-                <h3>{t.work_you_could_be_here}</h3>
-                <span></span>
-              </div>
-            </div>
-            <div className="center">
-              <Link href="/contact">
-                <a className="cta">
-                  {t.work_cta}
-                </a>
-              </Link>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section className='container'>
-        <h2>Ako prebieha spolupráca?</h2>
-        <Carousel items={t.cooperation} />
-      </section>
-
-      <section className='container'>
-        <h2>Máte pre nás projekt?</h2>
-        <p className='justify'>
-          Radi si Vás vypočujeme. Konštruktívnym dialógom vytvoríme návrh a nakoniec privedieme Váš projekt na svet. Zvyšok už je len na Vás.
-        </p>
-        <div className="center">
-          <Link href="/contact">
-            <a className="cta">
-              Chcem spoluprácu
-            </a>
-          </Link>
-        </div>
-      </section>
-
+          </ul>
+        </section>
+      </Animated>
+      <Animated animationDelay={.75}>
+        <section className='container'>
+          <h2>Ako prebieha spolupráca?</h2>
+          <Carousel items={t.cooperation} />
+        </section>
+      </Animated>
+      <Animated animationDelay={1}>
+        <section className='container'>
+          <h2>Máte pre nás projekt?</h2>
+          <p className='justify'>
+            Radi si Vás vypočujeme. Konštruktívnym dialógom vytvoríme návrh a nakoniec privedieme Váš projekt na svet. Zvyšok už je len na Vás.
+          </p>
+          <div className="center">
+            <Link href="/contact">
+              <a className="cta">
+                Chcem spoluprácu
+              </a>
+            </Link>
+          </div>
+        </section>
+      </Animated>
     </>
   )
 }

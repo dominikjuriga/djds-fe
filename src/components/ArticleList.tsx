@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import s from "../styles/ArticleList.module.css"
+import Animated from "../components/Animated"
 
 interface Props {
   articles: {
@@ -58,9 +59,6 @@ interface Props {
 }
 
 const Articles = ({ articles }: Props) => {
-  const leftArticlesCount = Math.ceil(articles.length / 5);
-  const leftArticles = articles.slice(0, leftArticlesCount);
-  const rightArticles = articles.slice(leftArticlesCount, articles.length);
 
   return (
     <div>
@@ -70,21 +68,14 @@ const Articles = ({ articles }: Props) => {
             🔎 Aj napriek snahe sa nám nepodarilo nájsť žiadne články. Určite na nich ale pilno pracujú!
           </p>
         )}
-        {leftArticles.map((article, i: number) => {
+        {articles.map((article, i: number) => {
           return (
-            <Card
-              article={article}
-              key={`article__left__${article.attributes.slug}`}
-            />
-          );
-        })}
-
-        {rightArticles.map((article, i: number) => {
-          return (
-            <Card
-              article={article}
-              key={`article__right__${article.attributes.slug}`}
-            />
+            <Animated animationDelay={i * .1}>
+              <Card
+                article={article}
+                key={`article__${article.attributes.slug}`}
+              />
+            </Animated>
           );
         })}
       </div>

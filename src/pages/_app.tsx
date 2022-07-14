@@ -4,6 +4,7 @@ import { AppContextProvider } from "../context/AppContext";
 import Layout from '../components/Layout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Seo from '../components/Seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

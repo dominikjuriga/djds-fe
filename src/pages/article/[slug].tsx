@@ -5,6 +5,8 @@ import { fetchAPI } from '../../lib/api';
 import { getStrapiMedia, getStrapiMediaProfilePicture } from '../../lib/media';
 import s from "../../styles/Article.module.css"
 import Image from "next/image"
+import Seo from '../../components/Seo';
+import Animated from "../../components/Animated"
 
 interface Props {
   article: {
@@ -73,61 +75,68 @@ const Article = ({ article, categories }: Props) => {
   const imageUrl = getStrapiMedia(article.attributes.image)
   return (
     <>
+      <Seo seo={{ siteName: article.attributes.title }} />
       <section className='container'>
-        <div>
+        <Animated>
           <Image src={imageUrl} height={article.attributes.image.data.attributes.height} width={article.attributes.image.data.attributes.width}></Image>
-        </div>
-        <h1>
-          {article.attributes.title}
-        </h1>
-        <p>#{article.attributes.category.data.attributes.name}</p>
-        <div className={`${s.articleMeta}`}>
+        </Animated>
+        <Animated animationDelay={.25}>
+          <h1>
+            {article.attributes.title}
+          </h1>
+          <p>#{article.attributes.category.data.attributes.name}</p>
+          <div className={`${s.articleMeta}`}>
 
-          <div>
-            <p>
-              {article.attributes.author.data.attributes.name}
-            </p>
-            <p>
-              <Moment format="DD.MM.YYYY">
-                {article.attributes.publishedAt}
-              </Moment>
-            </p>
+            <div>
+              <p>
+                {article.attributes.author.data.attributes.name}
+              </p>
+              <p>
+                <Moment format="DD.MM.YYYY">
+                  {article.attributes.publishedAt}
+                </Moment>
+              </p>
+            </div>
+            <div>
+              {article.attributes.author.data.attributes.picture && (
+                <Image
+                  src={getStrapiMediaProfilePicture(
+                    article.attributes.author.data.attributes.picture.data.attributes.formats.small
+
+                  )}
+                  alt={
+                    article.attributes.author.data.attributes.picture.data
+                      .attributes.alternativeText
+                  }
+                  height="64px"
+                  width="64px"
+
+                  style={{
+                    position: "static",
+                    borderRadius: "20%",
+                    height: 60,
+                  }}
+                />
+              )}
+            </div>
           </div>
-          <div>
-            {article.attributes.author.data.attributes.picture && (
-              <Image
-                src={getStrapiMediaProfilePicture(
-                  article.attributes.author.data.attributes.picture.data.attributes.formats.small
-
-                )}
-                alt={
-                  article.attributes.author.data.attributes.picture.data
-                    .attributes.alternativeText
-                }
-                height="64px"
-                width="64px"
-
-                style={{
-                  position: "static",
-                  borderRadius: "20%",
-                  height: 60,
-                }}
-              />
-            )}
-          </div>
-        </div>
-        <hr />
+          <hr />
+        </Animated>
       </section>
-      <section className="container">
-        <ReactMarkdown>
-          {article.attributes.summary}
-        </ReactMarkdown>
-      </section>
-      <section className='container'>
-        <ReactMarkdown>
-          {article.attributes.content}
-        </ReactMarkdown>
-      </section>
+      <Animated animationDelay={0.5}>
+        <section className="container">
+          <ReactMarkdown>
+            {article.attributes.summary}
+          </ReactMarkdown>
+        </section>
+      </Animated>
+      <Animated animationDelay={0.75}>
+        <section className='container'>
+          <ReactMarkdown>
+            {article.attributes.content}
+          </ReactMarkdown>
+        </section>
+      </Animated>
     </>
   )
 }
