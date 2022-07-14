@@ -1,0 +1,17 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list>li {
+  font-weight: bold;
+  margin-bottom: var(--cta-padding);
+}
+
+.list>li>ul>li {
+  font-weight: normal;
+}
+
+.list a {
+  color: var(--light-theme-text);
+}

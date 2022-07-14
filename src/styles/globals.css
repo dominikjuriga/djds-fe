@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=PT+Sans:wght@400;700&display=swap');
+
+:root {
+  --navbar-height: 6em;
+  --navbar-padding: 1em;
+  --footer-padding: 1em;
+  --content-padding: 1em;
+  --content-padding-lg-x: 15em;
+  --content-padding-lg-y: 2em;
+  --content-padding-lg: var(--content-padding-lg-y) var(--content-padding-lg-x);
+  --content-padding-xl-x: 30em;
+  --content-padding-xl-y: 2em;
+  --content-padding-xl: var(--content-padding-xl-y) var(--content-padding-xl-x);
+  --content-margin: 2em;
+  --content-gap: 2em;
+  --content-gap-lg: 4em;
+  --content-gap-xl: 6em;
+  --service-list-padding: 3em;
+  --cta-padding: 1em;
+  --border-radius: 2em;
+  --section-margin: 2em;
+  --breakpoint-lg: 768px;
+  --dark-theme-bg: #222;
+  --dark-theme-bg-lighter: #444;
+  --dark-theme-text: #eee;
+  --light-theme-bg: #eee;
+  --light-theme-text: #222;
+  --djds-light: rgba(58, 153, 255, 1);
+  --djds-medium: rgba(35, 140, 255, 1);
+  --djds-dark: rgba(0, 118, 238, 1);
+  --djds-gradient: linear-gradient(6deg, var(--djds-light) 0%, var(--djds-medium) 50%, var(--djds-dark) 100%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section {
+  margin-bottom: var(--section-margin);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  padding: var(--content-padding);
+}
+
+.main {
+  padding-top: var(--navbar-height);
+}
+
+.cta {
+  text-decoration: none;
+  background-color: var(--dark-theme-bg);
+  color: var(--dark-theme-text);
+  padding: var(--cta-padding);
+  border: none;
+  border-radius: var(--border-radius);
+  transition: .5s ease-in-out;
+}
+
+.cta:hover {
+  background-color: var(--dark-theme-bg-lighter);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.pageTitle {
+  font-size: 2em;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--content-gap);
+}
+
+.onlyBig {
+  display: none;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: var(--content-padding-lg);
+  }
+}
+
+@media only screen and (min-width: 1096px) {
+  .onlyBig {
+    display: block;
+  }
+
+  .onlySmall {
+    display: none;
+  }
+
+}
+
+
+@media only screen and (min-width: 1800px) {
+
+  .container {
+    padding: var(--content-padding-xl);
+  }
+}

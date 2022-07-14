@@ -1,0 +1,49 @@
+import s from "../styles/Header.module.css"
+import Link from "next/link"
+import Image from "next/image"
+import Hamburger from "./Hamburger"
+import { useAppContext } from "../context/AppContext"
+
+const navigation = [
+  { name: 'Domov', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Kontakt', href: '/contact' },
+]
+
+export default function Header() {
+  const { navOpen, closeNav } = useAppContext();
+  return (
+    <>
+      <header className={s.navbar}>
+        <div className={s.brand}>
+          <Link href="/">
+            <a className={s.logoSmall}>
+              <Image alt="DJDS logo" src={"/images/djds-logo.png"} width="64px" height="64px" />
+
+            </a>
+          </Link>
+          <Link href="/">
+            <a className={s.logoBig} >
+              <Image alt="DJDS Logo s textom DJDS" src={"/images/djds-text.svg"} width="215px" height="64px" />
+            </a>
+          </Link>
+        </div>
+        <ul className={` ${s.largeNav} onlyBig`}>
+          {navigation.map((navItem) => (
+            <li key={navItem.href}>
+              <Link href={navItem.href}>{navItem.name}</Link>
+            </li>
+          ))}
+        </ul>
+        <Hamburger />
+      </header>
+      <ul className={`${s.navmenu} ${navOpen ? s.active : ""}`}>
+        {navigation.map((navItem) => (
+          <li key={navItem.href} onClick={closeNav}>
+            <Link href={navItem.href}>{navItem.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}

@@ -1,0 +1,13 @@
+.footer {
+  background-color: var(--dark-theme-bg);
+  color: var(--dark-theme-text);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  padding: var(--footer-padding);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--dark-theme-text);
+}

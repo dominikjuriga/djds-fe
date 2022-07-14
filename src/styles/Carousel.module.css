@@ -1,0 +1,87 @@
+.mediaScroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 90%;
+  gap: 2em;
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+
+  padding: 0 1em 1em;
+  position: relative;
+}
+
+.mediaElement::before {
+  content: "";
+  height: 2px;
+  background-color: #e8e8e8;
+  width: 110%;
+  left: 1em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.mediaElement p {
+  margin: 0;
+}
+
+.mediaElement:last-of-type::before {
+  content: unset;
+}
+
+.mediaElement .tag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -1em;
+  background: var(--dark-theme-bg);
+  color: var(--dark-theme-text);
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mediaElement {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  display: grid;
+  gap: .7em;
+  grid-template-rows: min-content;
+  box-shadow: 0px 2px 9px 0px rgb(225 225 225 / 80%);
+  position: relative;
+}
+
+.mediaElement img {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.snapsInline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 1em;
+}
+
+.snapsInline>* {
+  scroll-snap-align: start;
+}
+
+@media only screen and (min-width: 1096px) {
+  .mediaScroller {
+    grid-auto-columns: 40%;
+  }
+
+}
+
+@media only screen and (min-width: 1496px) {
+  .mediaScroller {
+    grid-auto-columns: 30%;
+  }
+}

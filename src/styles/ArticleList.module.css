@@ -1,0 +1,12 @@
+.articleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-gap);
+}
+
+@media only screen and (min-width: 768px) {
+  .articleList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

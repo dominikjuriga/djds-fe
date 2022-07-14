@@ -1,0 +1,98 @@
+.hero {
+  height: calc(100vh - var(--navbar-height) - 4 * var(--navbar-padding));
+  display: flex;
+  color: var(--dark-theme-text);
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFA17F;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00223E, #FFA17F);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom right, #00223E, #FFA17F);
+  background: var(--djds-gradient);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.hero p {
+  text-align: center;
+}
+
+.scrollMargin {
+  scroll-margin: calc(var(--navbar-height) + (2 * var(--navbar-padding)));
+  ;
+}
+
+.services,
+.work_list {
+  list-style-type: none;
+  padding: 0 var(--content-padding);
+  margin-top: var(--content-margin);
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-gap);
+}
+
+.serviceTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--content-gap);
+}
+
+.serviceTitle h3 {
+  margin: 0;
+}
+
+.serviceTitle svg {
+  font-size: 2em;
+}
+
+.workItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.technology_list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.technology_list li {
+  font-size: 1.5em;
+}
+
+.spanTwo {
+  grid-column: span 2;
+  align-self: center;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .services,
+  .work_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--content-gap-lg);
+  }
+
+
+}
+
+@media only screen and (min-width: 1096px) {
+  .hero {
+    height: 30em;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--content-gap);
+    justify-content: space-between;
+  }
+
+  .services,
+  .work_list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--content-gap-xl);
+  }
+}

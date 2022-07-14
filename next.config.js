@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    loader: "default",
+    domains: [
+      "images.unsplash.com",
+      "localhost",
+      "djds-be-55tqe.ondigitalocean.app"
+    ]
+  }
 }
 
 module.exports = nextConfig
