@@ -60,16 +60,27 @@ section {
 
 .cta {
   text-decoration: none;
-  background-color: var(--dark-theme-bg);
+  background-color: var(--djds-light);
   color: var(--dark-theme-text);
   padding: var(--cta-padding);
   border: none;
   border-radius: var(--border-radius);
   transition: .5s ease-in-out;
+  cursor: pointer;
 }
 
 .cta:hover {
+  background-color: var(--djds-dark);
+}
+
+.contrast {
   background-color: var(--dark-theme-bg-lighter);
+  color: var(--dark-theme-text);
+}
+
+.contrast:hover {
+  background-color: var(--dark-theme-bg);
+
 }
 
 .center {

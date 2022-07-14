@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           <Animated
             animationDelay={0.5}
           >
-            <button className="cta onlyBig" onClick={executeScroll}>
+            <button className="cta contrast onlyBig" onClick={executeScroll}>
               {t.cta_title}
             </button>
           </Animated>
