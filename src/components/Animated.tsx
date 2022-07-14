@@ -5,11 +5,13 @@ interface Props {
   children: React.ReactNode,
   animationDelay?: number,
   animationDuration?: number,
+  className?: string,
 }
 
-const Animated = ({ children, animationDelay = 0, animationDuration = 1 }: Props) => {
+const Animated = ({ children, animationDelay = 0, animationDuration = 1, className = "" }: Props) => {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: "50px" }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: animationDuration, delay: animationDelay }}

@@ -45,12 +45,10 @@ const Home: NextPage = () => {
             <Image alt='Stretnutie troch ľudí pri káve' src="/illustrations/meeting.svg" width="300px" height="300px" />
           </div>
         </Animated>
-        <Animated animationDelay={0.75}>
-          <div className="center onlySmall">
-            <button className="cta " onClick={executeScroll}>
-              {t.cta_title}
-            </button>
-          </div>
+        <Animated animationDelay={0.75} className="center onlySmall">
+          <button className="cta " onClick={executeScroll}>
+            {t.cta_title}
+          </button>
         </Animated>
       </section>
 
