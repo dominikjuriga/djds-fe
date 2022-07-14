@@ -160,12 +160,14 @@ export async function getStaticPaths() {
   };
 }
 
-interface Params {
-  slug: string
+interface IParams {
+  params: {
+    slug: string
+  }
 }
 
-export async function getStaticProps(params: Params) {
-  const articleRes = await fetchAPI("/articles", {
+export async function getStaticProps({ params }: IParams) {
+  const articlesRes = await fetchAPI("/articles", {
     filters: {
       slug: params.slug,
     },
@@ -174,12 +176,9 @@ export async function getStaticProps(params: Params) {
   const categoriesRes = await fetchAPI("/categories");
 
   return {
-    props: {
-      article: articleRes.data[0],
-      categories: categoriesRes,
-    },
+    props: { article: articlesRes.data[0], categories: categoriesRes },
     revalidate: 1,
-  }
+  };
 }
 
 export default Article
