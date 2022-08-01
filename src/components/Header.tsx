@@ -4,11 +4,13 @@ import Image from "next/image"
 import Hamburger from "./Hamburger"
 import { useAppContext } from "../context/AppContext"
 import { motion } from "framer-motion"
+import UnderlineLink from "./UnderlineLink"
 
 const navigation = [
   { name: 'Domov', href: '/' },
   { name: 'Blog', href: '/blog' },
   { name: 'Kontakt', href: '/contact' },
+  { name: "Projekty", href: "/projects" }
 ]
 
 export default function Header() {
@@ -25,7 +27,6 @@ export default function Header() {
           <Link href="/">
             <a className={s.logoSmall}>
               <Image alt="DJDS logo" src={"/images/djds-logo.png"} width="64px" height="64px" />
-
             </a>
           </Link>
           <Link href="/">
@@ -36,9 +37,7 @@ export default function Header() {
         </div>
         <ul className={` ${s.largeNav} onlyXL`}>
           {navigation.map((navItem) => (
-            <li key={navItem.href}>
-              <Link href={navItem.href}>{navItem.name}</Link>
-            </li>
+            <UnderlineLink key={navItem.href} href={navItem.href} isNav={true}>{navItem.name}</UnderlineLink>
           ))}
         </ul>
         <Hamburger />

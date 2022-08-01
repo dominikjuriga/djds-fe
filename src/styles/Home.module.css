@@ -50,8 +50,11 @@
 .workItem {
   display: flex;
   justify-content: space-between;
+  gap: 1em;
   align-items: center;
 }
+
+.workItem span {}
 
 .technology_list {
   list-style-type: none;
@@ -78,6 +81,10 @@
     justify-content: space-between;
   }
 
+  .hero p {
+    text-align: left;
+  }
+
   .services,
   .work_list {
     display: grid;
@@ -90,10 +97,17 @@
 
 @media only screen and (min-width: 1496px) {
 
-
   .services,
   .work_list {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--content-gap-xl);
   }
+
+  .spanTwo {
+    grid-column: span 3;
+  }
+}
+
+.projectLink {
+  color: red;
 }
