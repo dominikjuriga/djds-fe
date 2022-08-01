@@ -15,7 +15,7 @@ const WorkList = () => {
   return (
     <ul className={s.work_list}>
       {workList.map((work) => (
-        <WorkListCard work={work} />
+        <WorkListCard work={work} key={work.slug} />
       ))}
 
       <li className={s.spanTwo}>
