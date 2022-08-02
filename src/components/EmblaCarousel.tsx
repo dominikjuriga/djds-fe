@@ -5,9 +5,10 @@ import s from "../styles/EmblaCarousel.module.css";
 import Image from "next/image"
 interface IProps {
   slides: number[],
-  media: string[]
+  media: string[],
+  projectName: string,
 }
-const EmblaCarousel = ({ slides, media }: IProps) => {
+const EmblaCarousel = ({ slides, media, projectName }: IProps) => {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false
@@ -15,7 +16,7 @@ const EmblaCarousel = ({ slides, media }: IProps) => {
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
-  const mediaByIndex = index => media[index % media.length];
+  const mediaByIndex = (index: number) => media[index % media.length];
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
@@ -43,6 +44,7 @@ const EmblaCarousel = ({ slides, media }: IProps) => {
                   src={mediaByIndex(index)}
                   layout="fill"
                   objectFit="contain"
+                  alt={`Screenshot projektu ${projectName}`}
                 />
               </div>
             </div>

@@ -99,6 +99,7 @@ h4 {
   border-radius: var(--border-radius);
   transition: .5s ease-in-out;
   cursor: pointer;
+  font-size: var(--fs-300);
 }
 
 .cta:hover {

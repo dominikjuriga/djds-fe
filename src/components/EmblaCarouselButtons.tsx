@@ -1,7 +1,17 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import s from "../styles/EmblaCarousel.module.css"
 
-export const DotButton = ({ selected, onClick }) => (
+interface IDotButton {
+  selected: boolean,
+  onClick: MouseEventHandler
+}
+
+interface IButton {
+  enabled: boolean,
+  onClick: MouseEventHandler
+}
+
+export const DotButton = ({ selected, onClick }: IDotButton) => (
   <button
     className={`${s.embla__dot} ${selected ? s.is_selected : ""}`}
     type="button"
@@ -9,7 +19,7 @@ export const DotButton = ({ selected, onClick }) => (
   />
 );
 
-export const PrevButton = ({ enabled, onClick }) => (
+export const PrevButton = ({ enabled, onClick }: IButton) => (
   <button
     className={`${s.embla__button} ${s.embla__button__prev}`}
     onClick={onClick}
@@ -21,7 +31,7 @@ export const PrevButton = ({ enabled, onClick }) => (
   </button>
 );
 
-export const NextButton = ({ enabled, onClick }) => (
+export const NextButton = ({ enabled, onClick }: IButton) => (
   <button
     className={`${s.embla__button} ${s.embla__button__next}`}
     onClick={onClick}

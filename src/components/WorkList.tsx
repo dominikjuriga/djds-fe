@@ -1,15 +1,7 @@
 import React from 'react'
 import s from "../styles/Home.module.css"
 import Link from "next/link"
-import Tooltip from './Tooltip'
 import WorkListCard from './WorkListCard'
-
-interface IWork {
-  title: string,
-  duration: string,
-  description: string,
-  slug: string
-}
 
 const WorkList = () => {
   return (
@@ -43,12 +35,7 @@ const t = {
 }
 
 const workList = [
-  // {
-  //   title: "Veterinárna klinika",
-  //   duration: "2021 - 2022",
-  //   description: "Spolupráca na systéme slúžiacom na správu veterinárnych ambulancií, vyšetrení a skladov. Používateľom poskytuje prehľad svojich domácich maznáčikov, ich diagnóz a medikácií.",
-  //   slug: "vet",
-  // },
+
   {
     title: "E-Learning",
     duration: "2021 - 2022",

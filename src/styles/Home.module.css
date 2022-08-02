@@ -19,8 +19,7 @@
 }
 
 .scrollMargin {
-  scroll-margin: calc(var(--navbar-height) + (2 * var(--navbar-padding)));
-  ;
+  scroll-margin: var(--navbar-height);
 }
 
 .services,
@@ -92,12 +91,11 @@
     gap: var(--content-gap-lg);
   }
 
-
 }
 
 @media only screen and (min-width: 1496px) {
 
-  .services,
+  .hero .services,
   .work_list {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--content-gap-xl);

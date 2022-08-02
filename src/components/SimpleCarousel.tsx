@@ -1,5 +1,4 @@
 import React from 'react'
-import s from "../styles/SimpleCarousel.module.css"
 
 import useEmblaCarousel from "embla-carousel-react"
 

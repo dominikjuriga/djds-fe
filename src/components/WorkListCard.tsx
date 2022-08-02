@@ -1,6 +1,5 @@
 import React from 'react'
 import s from "../styles/Home.module.css"
-import Link from 'next/link'
 import UnderlineLink from './UnderlineLink'
 
 interface IProps {

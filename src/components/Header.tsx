@@ -3,7 +3,6 @@ import Link from "next/link"
 import Image from "next/image"
 import Hamburger from "./Hamburger"
 import { useAppContext } from "../context/AppContext"
-import { motion } from "framer-motion"
 import UnderlineLink from "./UnderlineLink"
 
 const navigation = [
