@@ -12,6 +12,7 @@ import { useRef } from "react"
 import { motion, AnimatePresence } from 'framer-motion'
 import Animated from '../components/Animated'
 import AnimatedInView from "../components/AnimatedInView"
+import WorkList from '../components/WorkList'
 
 const Home: NextPage = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
           </div>
         </Animated>
         <Animated animationDelay={0.75} className="center onlySmall">
-          <button className="cta " onClick={executeScroll}>
+          <button className="cta contrast" onClick={executeScroll}>
             {t.cta_title}
           </button>
         </Animated>
@@ -73,42 +74,7 @@ const Home: NextPage = () => {
         <section className="container">
           <h2>{t.work_title}</h2>
           <p>{t.work_subtitle}</p>
-          <ul className={s.work_list}>
-            {t.work_list.map((work) => (
-              <li key={work.title}>
-                <div className={s.workItem}>
-                  <h3>{work.title}</h3>
-                  <span>{work.duration}</span>
-                </div>
-                <p className='justify'>{work.description}</p>
-                <ul className={s.technology_list}>
-                  {work.technologies.map((technology) => (
-                    <li key={technology.title} >
-                      <Tooltip title={technology.title}>
-                        {technology.icon}
-                      </Tooltip>
-                    </li>
-                  ))}
-                </ul>
-
-              </li>
-            ))}
-            <li className={s.spanTwo}>
-              <div className="center">
-                <div className={s.workItem}>
-                  <h3>{t.work_you_could_be_here}</h3>
-                  <span></span>
-                </div>
-              </div>
-              <div className="center">
-                <Link href="/contact">
-                  <a className="cta">
-                    {t.work_cta}
-                  </a>
-                </Link>
-              </div>
-            </li>
-          </ul>
+          <WorkList />
         </section>
       </Animated>
       <Animated animationDelay={.75}>
@@ -168,84 +134,7 @@ const t = {
   ],
   work_title: "Naše projekty.",
   work_subtitle: "Máme za klobúkom niekoľko veľkých projektov.",
-  work_list: [
-    {
-      title: "PetPass",
-      duration: "2021 - 2022",
-      description: "Spolupráca na systéme slúžiacom na správu veterinárnych ambulancií, vyšetrení a skladov. Používateľom poskytuje prehľad svojich domácich maznáčikov, ich diagnóz a medikácií.",
-      technologies: [
-        {
-          title: "Laravel",
-          icon: <FaLaravel />
-        },
-        {
-          title: "MariaDB",
-          icon: <SiMariadb />
-        },
-        {
-          title: "VueJS",
-          icon: <FaVuejs />
-        }
-      ]
-    },
-    {
-      title: "E-Learning",
-      duration: "2021 - 2022",
-      description: "Online vzdelávacia platforma pre súkromné školy. Umožňuje organizáciu tried, livestreaming a chat.",
-      technologies: [
-        {
-          title: "Laravel",
-          icon: <FaLaravel />
-        },
-        {
-          title: "WebRTC",
-          icon: <SiWebrtc />
-        },
-        {
-          title: "MariaDB",
-          icon: <SiMariadb />
-        },
-        {
-          title: "VueJS",
-          icon: <FaVuejs />
-        }
-      ]
-    },
-    {
-      title: "Slovak Retriever Klub",
-      duration: "2021 - 2022",
-      description: "Webová stránka a administračný panel pre správu slovenského klubu retrieverov.",
-      technologies: [
-        {
-          title: "Laravel",
-          icon: <FaLaravel />
-        },
-        {
-          title: "MariaDB",
-          icon: <SiMariadb />
-        }
-      ]
-    },
-    {
-      title: "Var Astro",
-      duration: "2021 - 2022",
-      description: "Systém pre správu a publikáciu pozorovaní hviezdnych objektov. Cieľom je zjednodušenie práce členov Sekcie premenných hviezd a exoplanét.",
-      technologies: [
-        {
-          title: "ASP.NET",
-          icon: <SiCsharp />
-        },
-        {
-          title: "Blazor",
-          icon: <SiBlazor />
-        },
-        {
-          title: "MariaDB",
-          icon: <SiMariadb />
-        }
-      ]
-    }
-  ],
+
   work_you_could_be_here: "Tu môže byť aj Váš projekt",
   work_cta: "Kontaktujte nás",
   cooperation: [

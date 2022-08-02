@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { useContext } from "react";
 import { useAppContext } from "../context/AppContext";
-import { getStrapiMedia } from "../lib/media";
 
 interface ISeo {
   seo: {

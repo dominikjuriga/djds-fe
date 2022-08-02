@@ -7,6 +7,8 @@
   -ms-user-select: none;
   user-select: none;
   margin-right: .5em;
+  position: relative;
+  right: -1.5em;
 }
 
 .active {

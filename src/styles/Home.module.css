@@ -19,8 +19,7 @@
 }
 
 .scrollMargin {
-  scroll-margin: calc(var(--navbar-height) + (2 * var(--navbar-padding)));
-  ;
+  scroll-margin: var(--navbar-height);
 }
 
 .services,
@@ -50,8 +49,11 @@
 .workItem {
   display: flex;
   justify-content: space-between;
+  gap: 1em;
   align-items: center;
 }
+
+.workItem span {}
 
 .technology_list {
   list-style-type: none;
@@ -78,6 +80,10 @@
     justify-content: space-between;
   }
 
+  .hero p {
+    text-align: left;
+  }
+
   .services,
   .work_list {
     display: grid;
@@ -85,15 +91,21 @@
     gap: var(--content-gap-lg);
   }
 
-
 }
 
 @media only screen and (min-width: 1496px) {
 
-
-  .services,
+  .hero .services,
   .work_list {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--content-gap-xl);
   }
+
+  .spanTwo {
+    grid-column: span 3;
+  }
+}
+
+.projectLink {
+  color: red;
 }

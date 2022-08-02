@@ -64,9 +64,9 @@ const Articles = ({ articles }: Props) => {
     <div>
       <div className={s.articleList}>
         {articles.length === 0 && (
-          <p>
+          <Animated animationDelay={0.5}>
             🔎 Aj napriek snahe sa nám nepodarilo nájsť žiadne články. Určite na nich ale pilno pracujú!
-          </p>
+          </Animated>
         )}
         {articles.map((article, i: number) => {
           return (

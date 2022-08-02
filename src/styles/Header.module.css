@@ -63,14 +63,12 @@
   .logoBig {
     display: block;
   }
-
-  .navbar {
-    padding: 1em var(--content-padding-lg-x);
-  }
 }
 
 @media only screen and (min-width: 1096px) {
-
+  .navbar {
+    padding: 1em var(--content-padding-lg-x);
+  }
 
   .largeNav {
     display: flex;
@@ -78,13 +76,8 @@
     gap: var(--content-gap-lg);
   }
 
-  .largeNav a {
-    color: var(--dark-theme-text);
-    text-decoration: none;
-  }
-
-  .largeNav a:hover {
-    text-decoration: underline;
+  .navmenu {
+    display: none;
   }
 }
 
