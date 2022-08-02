@@ -8,68 +8,6 @@ import Image from "next/image"
 import Seo from '../../components/Seo';
 import Animated from "../../components/Animated"
 
-interface Props {
-  article: {
-    id: number,
-    attributes: {
-      content: string,
-      summary: string,
-      description: string,
-      category: {
-        data: {
-          attributes: {
-            name: string,
-            slug: string
-          }
-        }
-      }
-      slug: string,
-      title: string,
-      createdAt: string,
-      updatedAt: string,
-      publishedAt: string,
-      author: {
-        data: {
-          id: number,
-          attributes: {
-            name: string,
-            picture: {
-              data: {
-                attributes: {
-                  alternativeText: string,
-                  formats: {
-                    small: {
-                      url: string,
-                      width: number,
-                      height: number
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      image: {
-        data: {
-          attributes: {
-            url: string,
-            alternativeText: string,
-            width: number,
-            height: number
-          }
-        }
-      }
-    }
-  },
-  categories: {
-    attributes: {
-      name: string,
-      slug: string
-    }
-  }[]
-}
-
 const Article = ({ article, categories }: Props) => {
   console.log(article)
   const imageUrl = getStrapiMedia(article.attributes.image)
@@ -141,12 +79,6 @@ const Article = ({ article, categories }: Props) => {
   )
 }
 
-interface Article {
-  attributes: {
-    slug: string
-  }
-}
-
 export async function getStaticPaths() {
   const articlesRes = await fetchAPI("/articles", { fields: ["slug"] });
 
@@ -158,12 +90,6 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
-
-interface IParams {
-  params: {
-    slug: string
-  }
 }
 
 export async function getStaticProps({ params }: IParams) {
@@ -179,6 +105,80 @@ export async function getStaticProps({ params }: IParams) {
     props: { article: articlesRes.data[0], categories: categoriesRes },
     revalidate: 1,
   };
+}
+
+interface Article {
+  attributes: {
+    slug: string
+  }
+}
+
+interface Props {
+  article: {
+    id: number,
+    attributes: {
+      content: string,
+      summary: string,
+      description: string,
+      category: {
+        data: {
+          attributes: {
+            name: string,
+            slug: string
+          }
+        }
+      }
+      slug: string,
+      title: string,
+      createdAt: string,
+      updatedAt: string,
+      publishedAt: string,
+      author: {
+        data: {
+          id: number,
+          attributes: {
+            name: string,
+            picture: {
+              data: {
+                attributes: {
+                  alternativeText: string,
+                  formats: {
+                    small: {
+                      url: string,
+                      width: number,
+                      height: number
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      image: {
+        data: {
+          attributes: {
+            url: string,
+            alternativeText: string,
+            width: number,
+            height: number
+          }
+        }
+      }
+    }
+  },
+  categories: {
+    attributes: {
+      name: string,
+      slug: string
+    }
+  }[]
+}
+
+interface IParams {
+  params: {
+    slug: string
+  }
 }
 
 export default Article

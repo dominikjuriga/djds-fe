@@ -3,21 +3,6 @@ import Seo from "./Seo"
 import EmblaCarousel from "./EmblaCarousel"
 import ReactMarkdown from "react-markdown"
 
-interface IProject {
-  project: {
-    id: number,
-    attributes: {
-      title: string,
-      slug: string,
-      content: string,
-      createdAt: string,
-      updatedAt: string,
-      publishedAt: string
-    },
-    images?: string[]
-  }
-}
-
 const ProjectPage = ({ project }: IProject) => {
   return (
     <>
@@ -34,6 +19,21 @@ const ProjectPage = ({ project }: IProject) => {
       </section>
     </>
   )
+}
+
+interface IProject {
+  project: {
+    id: number,
+    attributes: {
+      title: string,
+      slug: string,
+      content: string,
+      createdAt: string,
+      updatedAt: string,
+      publishedAt: string
+    },
+    images?: string[]
+  }
 }
 
 export default ProjectPage

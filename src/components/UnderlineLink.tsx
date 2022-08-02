@@ -2,12 +2,6 @@ import React from 'react'
 import Link from "next/link"
 import s from "../styles/UnderlineLink.module.css"
 
-interface IProps {
-  isNav?: boolean,
-  href: string,
-  children: React.ReactNode
-}
-
 const UnderlineLink = ({ children, href, isNav = false }: IProps) => {
   return (
     <Link href={href}  >
@@ -16,6 +10,12 @@ const UnderlineLink = ({ children, href, isNav = false }: IProps) => {
       </a>
     </Link>
   )
+}
+
+interface IProps {
+  isNav?: boolean,
+  href: string,
+  children: React.ReactNode
 }
 
 export default UnderlineLink

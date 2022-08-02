@@ -3,11 +3,7 @@ import { PrevButton, NextButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import s from "../styles/EmblaCarousel.module.css";
 import Image from "next/image"
-interface IProps {
-  slides: number[],
-  media: string[],
-  projectName: string,
-}
+
 const EmblaCarousel = ({ slides, media, projectName }: IProps) => {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
@@ -34,7 +30,7 @@ const EmblaCarousel = ({ slides, media, projectName }: IProps) => {
 
   return (
     <div className={s.embla}>
-      <div className={s.embla__viewport} ref={viewportRef}>
+      <div className={`${s.embla__viewport} ${s.is_draggable}`} ref={viewportRef}>
         <div className={s.embla__container}>
           {slides.map((index: number) => (
             <div className={s.embla__slide} key={index}>
@@ -56,5 +52,11 @@ const EmblaCarousel = ({ slides, media, projectName }: IProps) => {
     </div>
   );
 };
+
+interface IProps {
+  slides: number[],
+  media: string[],
+  projectName: string,
+}
 
 export default EmblaCarousel;
