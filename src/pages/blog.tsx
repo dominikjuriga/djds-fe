@@ -6,6 +6,55 @@ import { toast } from "react-toastify"
 import Seo from '../components/Seo'
 import Animated from "../components/Animated"
 
+const Blog = ({ articles, loadFailed }: Props) => {
+  useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_STRAPI_API_URL)
+    // this runs twice in development mode
+    // https://flaviocopes.com/react-useeffect-two-times/
+    if (loadFailed) {
+      toast.error("Nepodarilo sa načítať články. Skúste to prosím neskôr.")
+    }
+    return () => { }
+  }, [loadFailed])
+
+  return (
+    <>
+      <Seo seo={{ siteName: "Blog" }} />
+      <section className='container'>
+        <Animated>
+          <h2>Blog</h2>
+        </Animated>
+        <ArticleList articles={articles} />
+      </section>
+    </>
+  )
+}
+
+export async function getStaticProps() {
+  try {
+    const [articlesRes] = await Promise.all([
+      fetchAPI("/articles", {
+        populate: ["image", "category"]
+      })
+    ])
+    return {
+      props: {
+        articles: articlesRes.data,
+        loadFailed: false
+      },
+      revalidate: 10
+    }
+  }
+  catch (e) {
+    return {
+      props: {
+        articles: [],
+        loadFailed: true
+      }
+    }
+  }
+}
+
 interface Props {
   articles: {
     id: number,
@@ -60,59 +109,6 @@ interface Props {
     }
   }[],
   loadFailed: boolean
-}
-
-const Blog = ({ articles, loadFailed }: Props) => {
-
-  useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_STRAPI_API_URL)
-    // this runs twice in development mode
-    // https://flaviocopes.com/react-useeffect-two-times/
-    if (loadFailed) {
-      toast.error("Nepodarilo sa načítať články. Skúste to prosím neskôr.")
-    }
-    return () => { }
-  }, [loadFailed])
-
-  return (
-    <>
-      <Seo seo={{ siteName: "Blog" }} />
-      <section className='container'>
-        <Animated>
-          <h2>Blog</h2>
-        </Animated>
-        <ArticleList articles={articles} />
-      </section>
-    </>
-  )
-}
-
-export async function getStaticProps() {
-
-  try {
-    const [articlesRes] = await Promise.all([
-      fetchAPI("/articles", {
-        populate: ["image", "category"]
-      })
-    ])
-    return {
-      props: {
-        articles: articlesRes.data,
-        loadFailed: false
-      },
-      revalidate: 10
-    }
-  }
-  catch (e) {
-    return {
-      props: {
-        articles: [],
-        loadFailed: true
-      }
-    }
-  }
-
-
 }
 
 export default Blog

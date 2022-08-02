@@ -16,11 +16,6 @@ export default function Header() {
   const { navOpen, closeNav } = useAppContext();
   return (
     <>
-      {/* <motion.header
-        // className={s.navbar}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      > */}
       <header className={s.navbar}>
         <div className={s.brand}>
           <Link href="/">
@@ -41,7 +36,6 @@ export default function Header() {
         </ul>
         <Hamburger />
       </header>
-      {/* </motion.header> */}
       <ul className={`${s.navmenu} ${navOpen ? s.active : ""}`}>
         {navigation.map((navItem) => (
           <li key={navItem.href} onClick={closeNav}>

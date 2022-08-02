@@ -1,13 +1,6 @@
 import Head from "next/head";
 import { useAppContext } from "../context/AppContext";
 
-interface ISeo {
-  seo: {
-    siteName: string,
-    article?: boolean
-  }
-}
-
 const Seo = ({ seo }: ISeo) => {
   const { defaultSeo } = useAppContext();
   const seoWithDefaults = {
@@ -50,5 +43,12 @@ const Seo = ({ seo }: ISeo) => {
     </Head>
   );
 };
+
+interface ISeo {
+  seo: {
+    siteName: string,
+    article?: boolean
+  }
+}
 
 export default Seo;

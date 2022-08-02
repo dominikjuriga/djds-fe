@@ -1,13 +1,15 @@
 import React, { ReactNode } from 'react'
-interface Props {
-  children: ReactNode
-}
+
 const Main = ({ children }: Props) => {
   return (
     <main className='main'>
       {children}
     </main>
   )
+}
+
+interface Props {
+  children: ReactNode
 }
 
 export default Main

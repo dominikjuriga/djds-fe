@@ -2,7 +2,6 @@ import React from 'react'
 import ProjectPage from '../../components/ProjectPage'
 
 const elearning = () => {
-
   const p = {
     id: 2,
     attributes: {
@@ -14,6 +13,7 @@ const elearning = () => {
       publishedAt: "2022-07-30T10:19:21.649Z"
     }
   }
+
   return (
     <ProjectPage project={p} />
   )

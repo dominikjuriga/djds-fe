@@ -2,15 +2,6 @@ import React from 'react'
 import s from "../styles/Home.module.css"
 import UnderlineLink from './UnderlineLink'
 
-interface IProps {
-  work: {
-    title: string,
-    slug: string,
-    duration: string,
-    description: string
-  }
-}
-
 const WorkListCard = ({ work }: IProps) => {
   return (
     <li key={work.title} >
@@ -29,6 +20,15 @@ const WorkListCard = ({ work }: IProps) => {
 
 const t = {
   moreDetails: "Viac detailov"
+}
+
+interface IProps {
+  work: {
+    title: string,
+    slug: string,
+    duration: string,
+    description: string
+  }
 }
 
 export default WorkListCard

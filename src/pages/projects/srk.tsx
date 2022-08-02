@@ -2,7 +2,6 @@ import React from 'react'
 import ProjectPage from '../../components/ProjectPage'
 
 const srk = () => {
-
   const p = {
     id: 3,
     attributes: {
@@ -19,6 +18,7 @@ const srk = () => {
       "/images/srk/srk3.png",
     ]
   }
+
   return (
     <ProjectPage project={p} />
   )

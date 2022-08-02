@@ -1,16 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import s from "../styles/EmblaCarousel.module.css"
 
-interface IDotButton {
-  selected: boolean,
-  onClick: MouseEventHandler
-}
-
-interface IButton {
-  enabled: boolean,
-  onClick: MouseEventHandler
-}
-
 export const DotButton = ({ selected, onClick }: IDotButton) => (
   <button
     className={`${s.embla__dot} ${selected ? s.is_selected : ""}`}
@@ -42,3 +32,13 @@ export const NextButton = ({ enabled, onClick }: IButton) => (
     </svg>
   </button>
 );
+
+interface IDotButton {
+  selected: boolean,
+  onClick: MouseEventHandler
+}
+
+interface IButton {
+  enabled: boolean,
+  onClick: MouseEventHandler
+}

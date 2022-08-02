@@ -1,19 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react"
 
-interface IDefaultSeo {
-  metaTitle: string,
-  metaDescription: string,
-  shareImage: string,
-}
-
-type appContextType = {
-  navOpen: boolean,
-  defaultSeo: IDefaultSeo,
-  toggleNav: () => void,
-  closeNav: () => void,
-  openNav: () => void,
-}
-
 const appContextDefaultValues: appContextType = {
   navOpen: false,
   defaultSeo: {
@@ -27,11 +13,6 @@ const appContextDefaultValues: appContextType = {
 }
 
 const AppContext = createContext<appContextType>(appContextDefaultValues);
-
-
-type Props = {
-  children: ReactNode
-}
 
 export function AppContextProvider({ children }: Props) {
   const [navOpen, setNavOpen] = useState<boolean>(false);
@@ -69,5 +50,22 @@ export function AppContextProvider({ children }: Props) {
   )
 }
 
+interface IDefaultSeo {
+  metaTitle: string,
+  metaDescription: string,
+  shareImage: string,
+}
+
+type appContextType = {
+  navOpen: boolean,
+  defaultSeo: IDefaultSeo,
+  toggleNav: () => void,
+  closeNav: () => void,
+  openNav: () => void,
+}
+
+type Props = {
+  children: ReactNode
+}
 
 export function useAppContext() { return useContext(AppContext) }
