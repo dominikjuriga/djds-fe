@@ -4,14 +4,9 @@ import Image from 'next/image'
 import Seo from '../components/Seo'
 import s from "../styles/Home.module.css"
 import { MdOutlineDevicesOther, MdCamera, MdLibraryBooks, MdTipsAndUpdates } from "react-icons/md"
-import { FaLaravel, FaVuejs } from "react-icons/fa"
-import { SiWebrtc, SiMariadb, SiCsharp, SiBlazor } from "react-icons/si"
-import Tooltip from '../components/Tooltip'
 import Carousel from '../components/Carousel'
 import { useRef } from "react"
-import { motion, AnimatePresence } from 'framer-motion'
 import Animated from '../components/Animated'
-import AnimatedInView from "../components/AnimatedInView"
 import WorkList from '../components/WorkList'
 
 const Home: NextPage = () => {
@@ -78,7 +73,7 @@ const Home: NextPage = () => {
         </section>
       </Animated>
       <Animated animationDelay={.75}>
-        <section className='container'>
+        <section className='full-container'>
           <h2>Ako prebieha spolupráca?</h2>
           <Carousel items={t.cooperation} />
         </section>
