@@ -13,9 +13,11 @@ const ProjectPage = ({ project }: IProject) => {
         {project.images && project.images && (
           <EmblaCarousel slides={Array.from(Array(project.images?.length).keys())} media={project.images} projectName={project.attributes.title} />
         )}
-        <ReactMarkdown>
-          {project.attributes.content}
-        </ReactMarkdown>
+        <article>
+          <ReactMarkdown>
+            {project.attributes.content}
+          </ReactMarkdown>
+        </article>
       </section>
     </>
   )

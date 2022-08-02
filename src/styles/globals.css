@@ -4,6 +4,31 @@
   src: url("/fonts/OpenSans-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: url("/fonts/PTSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("/fonts/PlayfairDisplay-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/fonts/RobotoSlab-Regular.ttf");
+}
+
 :root {
   --navbar-height: 6em;
   --navbar-padding: 1em;
@@ -12,7 +37,7 @@
   --content-padding-lg-x: 15em;
   --content-padding-lg-y: 2em;
   --content-padding-lg: var(--content-padding-lg-y) var(--content-padding-lg-x);
-  --content-padding-xl-x: 30em;
+  --content-padding-xl-x: 10em;
   --content-padding-xl-y: 2em;
   --content-padding-xl: var(--content-padding-xl-y) var(--content-padding-xl-x);
   --content-margin: 2em;
@@ -34,7 +59,7 @@
   --djds-dark: rgba(0, 118, 238, 1);
   --djds-gradient: linear-gradient(6deg, var(--djds-light) 0%, var(--djds-medium) 50%, var(--djds-dark) 100%);
   --fs-300: 1rem;
-  --fs-400: 1.25rem;
+  --fs-400: 1.15rem;
   --fs-500: 1.5rem;
   --fs-600: 2rem;
   --fs-700: 2.5rem;
@@ -43,14 +68,14 @@
 @media (min-width: 50em) {
   :root {
     --fs-500: 2rem;
-    --fs-600: 2.5rem;
+    --fs-600: 3rem;
     --fs-700: 3.5rem;
   }
 }
 
 body {
   margin: 0;
-  font-family: Open sans;
+  font-family: "Open sans";
 }
 
 section {
@@ -63,15 +88,29 @@ h1 {
 
 h2 {
   font-size: var(--fs-600);
+  font-family: "Roboto Slab";
 }
 
 h3 {
   font-size: var(--fs-500);
+  font-family: "Roboto Slab";
+
 }
 
 p,
+li {
+  font-family: "Montserrat";
+}
+
+p,
+li,
 h4 {
   font-size: var(--fs-400);
+}
+
+article h2 {
+  margin-top: 1.5em;
+  margin-bottom: 0;
 }
 
 .app {
@@ -100,6 +139,7 @@ h4 {
   transition: .5s ease-in-out;
   cursor: pointer;
   font-size: var(--fs-300);
+  font-weight: bold;
 }
 
 .cta:hover {
@@ -126,6 +166,7 @@ h4 {
 
 .pageTitle {
   font-size: 2em;
+  font-family: "Roboto Slab";
 }
 
 .flex {
