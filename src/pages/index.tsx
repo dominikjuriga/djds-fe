@@ -118,8 +118,8 @@ const t = {
     },
     {
       icon: <MdCamera />,
-      title: "Produktová fotografia",
-      subtitle: "Jeden obrázok povie viac ako tisíc slov. Preto by Váš produkt mal mať dobré fotografie. ",
+      title: "Fotografické služby",
+      subtitle: "Sme tu pre Vás, či už potrebujete portréty členov tímu alebo produktové fotografie.",
     },
     {
       icon: <MdLibraryBooks />,
@@ -133,7 +133,7 @@ const t = {
     },
   ],
   work_title: "Naše projekty.",
-  work_subtitle: "Máme za klobúkom niekoľko veľkých projektov.",
+  work_subtitle: "Máme za klobúkom 5+ ukončených projektov. Ten Váš môže byť ďalší.",
 
   work_you_could_be_here: "Tu môže byť aj Váš projekt",
   work_cta: "Kontaktujte nás",
