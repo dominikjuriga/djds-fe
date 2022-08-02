@@ -45,6 +45,7 @@
   --content-gap-lg: 4em;
   --content-gap-xl: 6em;
   --service-list-padding: 3em;
+  --container-max-width: 75rem;
   --cta-padding: 1em;
   --border-radius: 2em;
   --section-margin: 2em;
@@ -121,8 +122,20 @@ article h2 {
 
 .container {
   padding: var(--content-padding);
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: auto;
+}
+
+.full-container {
+  max-width: var(--container-max-width);
+}
+
+.full-container>* {
+  padding: 0 calc(var(--content-padding) / 2);
+}
+
+.full-container>.hasNoPadding {
+  padding: 0;
 }
 
 .main {
@@ -190,6 +203,16 @@ article h2 {
   .onlySmall {
     display: none;
   }
+
+  .full-container {
+    padding: var(--content-padding);
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .full-container>* {
+    padding: 0;
+  }
 }
 
 @media only screen and (min-width: 1096px) {
@@ -219,7 +242,7 @@ article h2 {
 }
 
 .onlySmall .cta {
-  margin-bottom: 2em;
+  margin-bottom: 5em;
 }
 
 .embla {

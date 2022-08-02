@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import s from "../styles/Carousel.module.css"
 import Link from "next/link"
+import useDraggableScroll from "use-draggable-scroll"
 
 const Carousel = ({ items }: Props) => {
+  const ref = useRef(null)
+  const { onMouseDown } = useDraggableScroll(ref)
   return (
-    <div className={`${s.mediaScroller} ${s.snapsInline}`}>
+    <div className={`${s.mediaScroller} ${s.snapsInline}`} ref={ref} onMouseDown={onMouseDown}>
       {items.map((item, index) => (
         <div className={s.mediaElement} key={index}>
           <span className={s.tag}>{index + 1}</span>
