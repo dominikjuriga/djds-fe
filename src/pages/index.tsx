@@ -73,12 +73,12 @@ const Home: NextPage = () => {
         </section>
       </Animated>
       <Animated animationDelay={.75}>
-        <section className='full-container'>
+        <section id='cooperation' className='full-container'>
           <h2>Ako prebieha spolupráca?</h2>
           <Carousel items={t.cooperation} />
         </section>
       </Animated>
-      <Animated animationDelay={1}>
+      <Animated >
         <section className='container'>
           <h2>Máte pre nás projekt?</h2>
           <p className='justify'>
@@ -124,7 +124,7 @@ const t = {
     {
       icon: <MdTipsAndUpdates />,
       title: "Potrebujete viac?",
-      subtitle: "Predstavivosti sa medze neklamú. Pokiaľ máte špecifickú potrebu, stačí sa nám ozvať.",
+      subtitle: "Predstavivosti sa medze nekladú. Pokiaľ máte špecifickú potrebu, stačí sa nám ozvať.",
     },
   ],
   work_title: "Naše projekty.",

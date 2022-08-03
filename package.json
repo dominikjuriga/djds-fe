@@ -12,6 +12,7 @@
     "@types/qs": "^6.9.7",
     "embla-carousel-react": "^7.0.0-rc05",
     "framer-motion": "^6.5.1",
+    "gray-matter": "^4.0.3",
     "moment": "^2.29.4",
     "next": "12.2.2",
     "qs": "^6.11.0",

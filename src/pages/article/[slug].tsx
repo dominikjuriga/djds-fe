@@ -1,184 +1,73 @@
 import React from 'react'
-import Moment from "react-moment";
+import fs from "fs";
+import matter from "gray-matter";
 import ReactMarkdown from 'react-markdown';
-import { fetchAPI } from '../../lib/api';
-import { getStrapiMedia, getStrapiMediaProfilePicture } from '../../lib/media';
 import s from "../../styles/Article.module.css"
-import Image from "next/image"
 import Seo from '../../components/Seo';
-import Animated from "../../components/Animated"
-
-const Article = ({ article, categories }: Props) => {
-  console.log(article)
-  const imageUrl = getStrapiMedia(article.attributes.image)
+const slug = ({ frontmatter, content }: Props) => {
   return (
     <>
-      <Seo seo={{ siteName: article.attributes.title }} />
-      <section className='container'>
-        <Animated className={s.maxBlogImage}>
-          <Image src={imageUrl} alt={article.attributes.image.data.attributes.alternativeText} height={article.attributes.image.data.attributes.height} width={article.attributes.image.data.attributes.width}></Image>
-        </Animated>
-        <Animated animationDelay={.25}>
-          <h1>
-            {article.attributes.title}
-          </h1>
-          <p>#{article.attributes.category.data.attributes.name}</p>
-          <div className={`${s.articleMeta}`}>
-
-            <div>
-              <p>
-                {article.attributes.author.data.attributes.name}
-              </p>
-              <p>
-                <Moment format="DD.MM.YYYY">
-                  {article.attributes.publishedAt}
-                </Moment>
-              </p>
-            </div>
-            <div>
-              {article.attributes.author.data.attributes.picture && (
-                <Image
-                  src={getStrapiMediaProfilePicture(
-                    article.attributes.author.data.attributes.picture.data.attributes.formats.small
-
-                  )}
-                  alt={
-                    article.attributes.author.data.attributes.picture.data
-                      .attributes.alternativeText
-                  }
-                  height="64px"
-                  width="64px"
-
-                  style={{
-                    position: "static",
-                    borderRadius: "20%",
-                    height: 60,
-                  }}
-                />
-              )}
-            </div>
-          </div>
-          <hr />
-        </Animated>
-      </section>
-      <Animated animationDelay={0.5}>
+      <Seo seo={{ siteName: frontmatter.title }}></Seo>
+      <article className={s.article}>
+        <div className={s.articleImage}>
+          <img src={frontmatter.socialImage} alt={`Obrázok článku ${frontmatter.title}`} />
+        </div>
         <section className="container">
-          <ReactMarkdown>
-            {article.attributes.summary}
-          </ReactMarkdown>
+          <div className={s.meta}>
+            <h4>
+              {frontmatter.author}
+            </h4>
+            <img src={frontmatter.authorImage} alt={frontmatter.author} />
+          </div>
+          <div className={s.content}>
+            <ReactMarkdown>
+              {content}
+            </ReactMarkdown>
+          </div>
         </section>
-      </Animated>
-      <Animated animationDelay={0.75}>
-        <section className='container'>
-          <ReactMarkdown>
-            {article.attributes.content}
-          </ReactMarkdown>
-        </section>
-      </Animated>
+      </article>
     </>
   )
 }
 
 export async function getStaticPaths() {
-  const articlesRes = await fetchAPI("/articles", { fields: ["slug"] });
-
+  const files = fs.readdirSync('articles');
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace(".md", "")
+    }
+  }))
   return {
-    paths: articlesRes.data.map((article: Article) => ({
-      params: {
-        slug: article.attributes.slug,
-      },
-    })),
-    fallback: false,
-  };
+    paths,
+    fallback: false
+  }
 }
 
-export async function getStaticProps({ params }: IParams) {
-  const articlesRes = await fetchAPI("/articles", {
-    filters: {
-      slug: params.slug,
-    },
-    populate: ["image", "category", "author.picture"],
-  });
-  const categoriesRes = await fetchAPI("/categories");
-
+export async function getStaticProps({ params: { slug } }: Params) {
+  const filename = fs.readFileSync(`articles/${slug}.md`, 'utf-8');
+  const { data: frontmatter, content } = matter(filename);
   return {
-    props: { article: articlesRes.data[0], categories: categoriesRes },
-    revalidate: 1,
-  };
-}
-
-interface Article {
-  attributes: {
-    slug: string
+    props: {
+      frontmatter,
+      content
+    }
   }
 }
 
 interface Props {
-  article: {
-    id: number,
-    attributes: {
-      content: string,
-      summary: string,
-      description: string,
-      category: {
-        data: {
-          attributes: {
-            name: string,
-            slug: string
-          }
-        }
-      }
-      slug: string,
-      title: string,
-      createdAt: string,
-      updatedAt: string,
-      publishedAt: string,
-      author: {
-        data: {
-          id: number,
-          attributes: {
-            name: string,
-            picture: {
-              data: {
-                attributes: {
-                  alternativeText: string,
-                  formats: {
-                    small: {
-                      url: string,
-                      width: number,
-                      height: number
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      image: {
-        data: {
-          attributes: {
-            url: string,
-            alternativeText: string,
-            width: number,
-            height: number
-          }
-        }
-      }
-    }
+  frontmatter: {
+    author: string,
+    authorImage: string,
+    title: string,
+    socialImage: string
   },
-  categories: {
-    attributes: {
-      name: string,
-      slug: string
-    }
-  }[]
+  content: string
 }
 
-interface IParams {
+interface Params {
   params: {
     slug: string
   }
 }
 
-export default Article
+export default slug

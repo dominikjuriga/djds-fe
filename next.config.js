@@ -9,7 +9,8 @@ const nextConfig = {
       "localhost",
       "djds-be-55tqe.ondigitalocean.app"
     ]
-  }
+  },
+  compress: true
 }
 
 module.exports = nextConfig

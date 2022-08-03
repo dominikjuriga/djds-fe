@@ -1,114 +1,51 @@
 import React from 'react'
-import { fetchAPI } from '../lib/api'
+import fs from 'fs';
+import matter from 'gray-matter';
 import ArticleList from "../components/ArticleList"
-import { useEffect } from 'react'
-import { toast } from "react-toastify"
-import Seo from '../components/Seo'
-import Animated from "../components/Animated"
-
-const Blog = ({ articles, loadFailed }: Props) => {
-  useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_STRAPI_API_URL)
-    // this runs twice in development mode
-    // https://flaviocopes.com/react-useeffect-two-times/
-    if (loadFailed) {
-      toast.error("Nepodarilo sa načítať články. Skúste to prosím neskôr.")
-    }
-    return () => { }
-  }, [loadFailed])
-
+import Animated from '../components/Animated';
+import Seo from '../components/Seo';
+const blog = ({ posts }: Props) => {
   return (
     <>
-      <Seo seo={{ siteName: "Blog" }} />
-      <section className='container'>
+      <Seo seo={{ siteName: "Blog" }}></Seo>
+      <section className="container">
         <Animated>
-          <h2>Blog</h2>
+          <h1>Blog</h1>
         </Animated>
-        <ArticleList articles={articles} />
+        <ArticleList articles={posts} />
       </section>
     </>
   )
 }
 
 export async function getStaticProps() {
-  try {
-    const [articlesRes] = await Promise.all([
-      fetchAPI("/articles", {
-        populate: ["image", "category"]
-      })
-    ])
-    return {
-      props: {
-        articles: articlesRes.data,
-        loadFailed: false
-      },
-      revalidate: 10
-    }
-  }
-  catch (e) {
-    return {
-      props: {
-        articles: [],
-        loadFailed: true
-      }
+  const files = fs.readdirSync("articles", { withFileTypes: true })
+  const posts = files
+    .filter(dirent => dirent.isFile())
+    .map((dirent) => {
+      const readFile = fs.readFileSync(`articles/${dirent.name}`, "utf-8");
+      const { data: frontmatter } = matter(readFile);
+
+      return { slug: dirent.name.replace(".md", ""), frontmatter }
+    })
+
+  return {
+    props: {
+      posts
     }
   }
 }
 
 interface Props {
-  articles: {
-    id: number,
-    attributes: {
-      content: string,
-      description: string,
-      category: {
-        data: {
-          attributes: {
-            name: string,
-            slug: string,
-          }
-        }
-      }
-      slug: string,
+  posts: {
+    slug: string,
+    frontmatter: {
+      date: string,
       title: string,
-      createdAt: string,
-      updatedAt: string,
-      publishedAt: string,
-      author: {
-        data: {
-          id: number,
-          attributes: {
-            name: string,
-            picture: {
-              data: {
-                attributes: {
-                  alternativeText: string,
-                  formats: {
-                    small: {
-                      url: string,
-                      width: number,
-                      height: number
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      image: {
-        data: {
-          attributes: {
-            url: string,
-            alternativeText: string,
-            width: number,
-            height: number
-          }
-        }
-      }
+      author: string,
+      socialImage: string
     }
-  }[],
-  loadFailed: boolean
+  }[]
 }
 
-export default Blog
+export default blog

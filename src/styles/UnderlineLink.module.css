@@ -10,6 +10,7 @@
 .underline_nav {
   --line: lightgray;
   --color: var(--dark-theme-text);
+  font-style: normal;
 }
 
 .underline span {
@@ -48,4 +49,9 @@
   --stroke-duration: .3s;
   --stroke-easing: cubic-bezier(.3, 1.5, .5, 1);
   --stroke-delay: .195s;
+}
+
+.ctaLight {
+  --line: lightgray;
+  --color: var(--dark-theme-text);
 }
