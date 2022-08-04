@@ -1,16 +1,31 @@
-.link {
+.card {
   display: flex;
   flex-direction: column;
-  color: var(--light-theme-text);
   text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-.cardTitle {
-  font-size: 1.5em;
-  margin-bottom: 0;
+.cardTop {
+  width: 100%;
+  min-height: 15rem;
+  height: auto;
+  overflow: hidden;
+  position: relative;
 }
 
-.cardCategory {
-  text-transform: uppercase;
-  font-style: italic;
+.cardTop img {
+  object-fit: cover;
+  aspect-ratio: 16/10;
+}
+
+.cardBottom {
+  color: var(--light-theme-text);
+  padding: var(--content-padding);
+}
+
+.cardBottom h2 {
+
+  font-size: var(--fs-400);
 }

@@ -1,0 +1,28 @@
+.interested {
+  padding: var(--content-padding);
+  background-color: var(--djds-light);
+  color: var(--dark-theme-text);
+  margin-bottom: 0;
+}
+
+.interested h2 {
+  margin-top: 0;
+}
+
+.list li::marker {
+  content: '> ';
+  font-weight: bold;
+}
+
+.list li {
+  margin-bottom: .5em;
+}
+
+@media (min-width: 75em) {
+  .interested {
+    border-radius: 10px;
+    padding: 5em var(--content-padding-lg-x);
+
+    margin-bottom: 3em;
+  }
+}

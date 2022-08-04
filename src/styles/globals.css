@@ -10,21 +10,6 @@
 }
 
 @font-face {
-  font-family: "PTSans";
-  src: url("/fonts/PTSans-Regular.ttf");
-}
-
-@font-face {
-  font-family: "PlayfairDisplay";
-  src: url("/fonts/PlayfairDisplay-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Lato";
-  src: url("/fonts/Lato-Regular.ttf");
-}
-
-@font-face {
   font-family: "Roboto Slab";
   src: url("/fonts/RobotoSlab-Regular.ttf");
 }
@@ -77,6 +62,7 @@
 body {
   margin: 0;
   font-family: "Open sans";
+  overscroll-behavior: none;
 }
 
 section {
@@ -112,6 +98,10 @@ h4 {
 article h2 {
   margin-top: 1.5em;
   margin-bottom: 0;
+}
+
+#cooperation {
+  scroll-margin: calc(2 * var(--navbar-height));
 }
 
 .app {
@@ -193,8 +183,6 @@ article h2 {
   display: none;
 }
 
-
-
 @media only screen and (min-width: 768px) {
   .onlyBig {
     display: block;
@@ -216,7 +204,9 @@ article h2 {
 }
 
 @media only screen and (min-width: 1096px) {
-  .container {
+
+  .container,
+  .full-container {
     padding: var(--content-padding-lg);
   }
 

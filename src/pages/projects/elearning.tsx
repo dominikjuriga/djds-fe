@@ -7,7 +7,32 @@ const elearning = () => {
     attributes: {
       title: "E-Learning",
       slug: "elearning",
-      content: "Cieľom tohto projektu bol návrh a implementácia systému slúžiaceho na online vzdelávanie.\n\n## K čomu slúži\nSystém slúži na čo najjednoduchší prechod študentov do online prostredia. Veľká časť sveta bola posledné roky ovplyvnená pandémiou, čo malo za následok transformáciu osobného života do online priestoru. Medzi najviac zasiahnutú časť patria bezpochyby študenti, ktorí sa nemohli plnohodnotne vzdelávať. E-Learning poskytuje možnosť tvorby tried, správy študentov a najmä organizovanie hodín alebo prednášok. \n\n### Pre učiteľov\nUčiteľ je v rámci systému hlavnou entitou. Každý učiteľ si môže tvoriť skupiny ľudí (triedy), ku ktorým má možnosť priradenia jednotlivých používateľov. Taktiež majú možnosť tvorby prednášok, či už jednorázových alebo opakovaných. Na každú takúto udalosť môže pozvať existujúcu skupinu, individuálnych používateľov alebo neregistrovaných používateľov pomocou e-mailovej adresy. Prednášky prebiehajú formou real-time vysielania doplnenej chatom. Každý pozvaný používateľ dostáva e-mailové notifikácie pred konaním udalosti.\n\n## Technické riešenie\nProjekt bol implementovaný pomocou technológie Laravel, ktorá vďaka jednoduchej intergrácii s frameworkom Vue.js umožňuje tvoriť dynamické aplikácie. Real-time komunikácia je zaistená pomocou WebRTC servera, ktorý je prevádzkovaný na privátnej infraštruktúre.\n",
+      content: `
+E-learning je online vzdelávacia platforma slúžiaca na čo najjednoduchší prechod do online vzdelávacieho prostredia. Hlavnou funkciou je real-time konferenčný hovor s chatom. Okrem toho zjednodušuje život učiteľom vďaka organizačným schoponostiam, ako je tvorba tried, opakovaných prednášiek a podobne.
+
+## Stručný prehľad funkcií systému:
+-  Udalosti
+    - Kalendár udalostí
+    - Rôzne typy (prednáška, diskusia)
+    - Notifikácie (vytvorenie udalosti, udalosť o chvíľu začne)
+        - SSO cez jednorázový link v maile
+    - Knižnica dokumentov
+        - Ku predmetom je možné nahrať dokumenty, ktoré sú viditeľné u udalostí daného predmetu
+    
+- Konferečný hovor
+    - Real-time hovor využívajúci protokol WebRTC
+        - Audio / Video, Zdieľanie obrazovky
+    - Administračný panel pre učiteľa
+        - (Za/Vy)pnutie kamery a mikrofónu účastníkov (individuálne alebo skupinovo), 
+    - Chat
+    - Rozloženie účastníkov podľa typu udalosti (Koláž, fokus na rozprávajúceho)
+    - Automatická tvorba záznamov
+    - Prihlásenie sa o slovo pri prednáškach
+        - Učiteľ musí potvrdiť
+        - Umožňuje účastníkovi zdieľať obrazovku
+
+## Technológie
+Systém je implementovaný vo frameworku Laravel. Interaktívna časť systému je implementovaná pomocou nástrojou Blade a Vue.js. WebRTC komunikácia je zaistená pomocou servera Janus, nad ktorým bolo vybudované API na komunikáciu medzi účastníkmi.`,
       createdAt: "2022-07-30T10:19:20.988Z",
       updatedAt: "2022-07-30T10:19:21.651Z",
       publishedAt: "2022-07-30T10:19:21.649Z"

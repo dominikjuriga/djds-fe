@@ -14,10 +14,10 @@ const Articles = ({ articles }: Props) => {
         )}
         {articles.map((article, i: number) => {
           return (
-            <Animated animationDelay={i * .1} key={article.attributes.slug}>
+            <Animated animationDelay={0.5 + i * .1} key={article.slug}>
               <Card
                 article={article}
-                key={`article__${article.attributes.slug}`}
+                key={`article__${article.slug}`}
               />
             </Animated>
           );
@@ -29,55 +29,12 @@ const Articles = ({ articles }: Props) => {
 
 interface Props {
   articles: {
-    id: number,
-    attributes: {
-      content: string,
-      description: string,
-      category: {
-        data: {
-          attributes: {
-            name: string,
-            slug: string,
-          }
-        }
-      }
-      slug: string,
+    slug: string,
+    frontmatter: {
+      date: string,
       title: string,
-      createdAt: string,
-      updatedAt: string,
-      publishedAt: string,
-      author: {
-        data: {
-          id: number,
-          attributes: {
-            name: string,
-            picture: {
-              data: {
-                attributes: {
-                  alternativeText: string,
-                  formats: {
-                    small: {
-                      url: string,
-                      width: number,
-                      height: number
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      image: {
-        data: {
-          attributes: {
-            url: string,
-            alternativeText: string,
-            width: number,
-            height: number
-          }
-        }
-      }
+      author: string,
+      socialImage: string
     }
   }[]
 }
