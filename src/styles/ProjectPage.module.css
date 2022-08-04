@@ -21,7 +21,8 @@
 @media (min-width: 75em) {
   .interested {
     border-radius: 10px;
-    padding: var(--content-padding-lg);
+    padding: 5em var(--content-padding-lg-x);
+
     margin-bottom: 3em;
   }
 }
