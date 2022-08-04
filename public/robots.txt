@@ -1,0 +1,6 @@
+Sitemap: https://djds.sk/api/sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

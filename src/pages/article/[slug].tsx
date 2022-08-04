@@ -31,12 +31,14 @@ const slug = ({ frontmatter, content }: Props) => {
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync('articles');
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".md", "")
-    }
-  }))
+  const dirents = fs.readdirSync('articles', { withFileTypes: true });
+  const paths = dirents
+    .filter(dirent => dirent.isFile())
+    .map((dirent) => ({
+      params: {
+        slug: dirent.name.replace(".md", "")
+      }
+    }))
   return {
     paths,
     fallback: false
