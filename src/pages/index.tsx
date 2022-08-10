@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <Animated
           animationDelay={0.5}>
           <div className="center">
-            <Image alt='Stretnutie troch ľudí pri káve' src="/illustrations/meeting.svg" width="300px" height="300px" />
+            <img alt='Stretnutie troch ľudí pri káve' src="/illustrations/meeting.svg" />
           </div>
         </Animated>
         <Animated animationDelay={0.75} className="center onlySmall">
